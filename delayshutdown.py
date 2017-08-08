@@ -104,13 +104,13 @@ class Delay_Shutdown(wx.Frame):
         self.mgr.Update()
         self.Bind(wx.EVT_CLOSE, self.OnClose)
         self.Centre()
-        self.Show(True)
+        self.Show()
 
     def OnClicked(self,event):
         if (self.i):
             try:
                 self.tt = int(self.htext.GetValue())
-                self.i = not self.i
+                self.i = 0
 
                 event.GetEventObject().SetBitmap(self.bmp2)
                 os.popen("shutdown -s -t %s" %self.tt)
@@ -123,7 +123,7 @@ class Delay_Shutdown(wx.Frame):
             self.timer.Stop()
             self.sttext.SetLabel("  Stop shutdown.")
             event.GetEventObject().SetBitmap(self.bmp1)
-            self.i = not self.i
+            self.i = 1
 
 
     def OnClicked3(self, event):
